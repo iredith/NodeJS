@@ -21,4 +21,15 @@ JavaScript on the Browser
   - NodeJs is also used in not only servers but also like in react, or running our own JS scripts.
   - [images: images/no-limit]
   - [images: images/role-in-web]
-  
+
+JavaScript Basics
+  - Weakly Typed Language
+    - No explicit type assignment
+    - Data types can be switched dynamically
+  - Object-Oriented Language
+    - Data can be organized in logical objects
+    - Primitive and reference types
+  - Versatile Language
+    - Runs in browser & directly on a PC/ server
+    - Can perform a broad vareity of tasks
+
