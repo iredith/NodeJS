@@ -53,3 +53,29 @@ Creating a node server
   - http and https are modules that can be used for creating a server
   - all the details for creating a server is in /** nodejs-complete-guide/app.js */ in branch /** the-basics */
 
+Node.Js Program LifeCycle
+  - when we run node application file for creating a server it starts executing script
+  - Then it starts parsing code, registering variables and functions
+  - Later it enters to event loop which keeps on running as log=ng as there are event listeners registered.
+  - The event loop exits when app exits or listeners were stop listening with process.exit()
+
+Sending Response
+  - We can console log response as we do for request
+  - We can set headers using response.setHeader('/** key */', '/** value */') e.g.: res.setHeader('Content-Type', 'text/html')
+  - we can send html content using res.write property
+
+Parsing Request Bodies
+  - Stream: stream is request data sent in chunks which means in parts until it fully parsed.
+  - we can use data on data event listeners by on methods where we all chunks of data
+  - After all the chunks are fully parsed we can use end event and convert the data from Buffer to string and work on it.
+
+NodeJs behind the scenes
+  - Our javascript runs in single threaded
+  - When our code starts event also starts and handle callbacks too
+  - Modules like 'fs' having heavy works sends to Worker Pool to do the heavy lifting which works on other threads.
+  - Worker pool triggers appropiate callbacks to event loop
+  - Event loop initially checks for timer callbacks like setTimeout, setInterval callbacks,
+  - then chacks for Pending callbacks like I/O-related (Disk and network operations {~Blocking Operations}) callbacks that were deferred
+  - Then enters into Poll phase which are new I/O events and their callbacks etc.,
+  - Then check callbacks like setImmediate callbacks
+  - Finally calls the close callbacksand executes those and closes of process is exited else wait for other events

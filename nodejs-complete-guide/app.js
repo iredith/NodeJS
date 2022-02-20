@@ -1,4 +1,5 @@
 const http = require('http');
+const routes = require('./routes');
 
 // given port value 3000 to liten for server
 const PORT = 3000
@@ -9,9 +10,7 @@ const PORT = 3000
 
 // listener function is executed anonymously and cresteServer returns server where we can execute multiple
 // functionalities.
-const server = http.createServer((req, res) => {
-  console.log(req)
-});
+const server = http.createServer(routes);
 
 // gives cmd to server to listen to certain port by default 80
 server.listen(PORT);
