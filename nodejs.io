@@ -80,3 +80,29 @@ NodeJs behind the scenes
   - Then check callbacks like setImmediate callbacks
   - Finally calls the close callbacksand executes those and closes of process is exited else wait for other events
   
+Summary:
+  - How the Web Works
+    1. Client ==> Request ==> Server ==> Response ==> Client
+  
+  - Program Lifecycle & Event Loop
+    1. Node.js runs non-blocking JS code and uses an event-driven code ("Event Loop") for running your logic.
+    2. A node program exits as soon as there is no more work to do.
+    3. NOTE: The createServer() event never finishes by default.
+
+  - Asynchronous Code
+    1. JS code is non-blocking
+    2. Use callbacks and events ==> Order Changes!
+
+  - Requests & Responses
+    1. Parse request data in chunks (Streams & Buffers)
+    2. Avoid "double responses".
+
+  - Node.js & Core Modules
+    1. Node.js ships with multiple core modules (http, fs, path, ...)
+    2. Core modules can be imported into anyfile to be used there.
+    3. Import via require('module')
+
+  - The Node Module System
+    1. Import via require('./path-to-file') for custom files or require('module') for core & third-party modules
+    2. Export via module.exports or just exports (for multiple exports)
+
