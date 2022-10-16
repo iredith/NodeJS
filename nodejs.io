@@ -75,7 +75,8 @@ NodeJs behind the scenes
   - Modules like 'fs' having heavy works sends to Worker Pool to do the heavy lifting which works on other threads.
   - Worker pool triggers appropiate callbacks to event loop
   - Event loop initially checks for timer callbacks like setTimeout, setInterval callbacks,
-  - then chacks for Pending callbacks like I/O-related (Disk and network operations {~Blocking Operations}) callbacks that were deferred
+  - then checks for Pending callbacks like I/O-related (Disk and network operations {~Blocking Operations}) callbacks that were deferred
   - Then enters into Poll phase which are new I/O events and their callbacks etc.,
   - Then check callbacks like setImmediate callbacks
   - Finally calls the close callbacksand executes those and closes of process is exited else wait for other events
+  
