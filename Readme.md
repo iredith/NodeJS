@@ -77,3 +77,36 @@ Some of the core modules are:
 
 `$ node server.js` --> Start Script --> Parse Code, Resgister Variables & Functions --> enters into Event Loop
 
+- **Event Loop** keeps on running as long as there are event listeners registered
+
+> process.exit() can be used to exit from process and stop the server.
+
+- Data for the request details exits in request which we use in first parameter of function in createServer
+
+- We use second parameter to send response.
+
+In Request:
+- URL endpoint contains in request.url and method in request.method
+- Data will come to node server in the form of chunks until it is fully parsed.
+- We can use Buffer concept contruct to allow to build data
+
+#### Single Thread, Event Loop & Blocking Code
+
+- Incoming requests are sent to our code which is running on single threaded JavaScript, whic start event loop when we run start our code to execution and heavy works are sent to worker pool (which works on different thread) and triggers callback in event loop.
+
+![Node.js - Looking Behind the Scenes](/images/node_flow.png "Node.js - Looking Behind the Scenes")
+
+The process of Event Loops is that it loops into callbacks that to process in a priority manner
+
+1. `Timer`: Execute setTimeOut, setInterval Callbacks
+2. `Pending Callbacks`: Execute I/O-related Callbacks that were deferred
+    - `I/O`? Input & Output Disk & Network Operations (~ Blocking Operations)
+3. `Poll Phase`: Retrieve new I/O events, execute their callbacks.
+    - if it contains timer callbacks it jumps to Timer Execution
+    - Or defer Execution if it exists
+4. `Check`: Execute setImmediate() callbacks
+5. `Close Callbacks`: Execute all 'close' event callbacks
+6. if we don't have any events left and exits from process then we exits from server *process.exit* which is maintained with refs by adding count or it waits on listening for other request.
+
+![Event Loop](/images/event_loop.png "Event Loop priority order for handling callbacks")
+
