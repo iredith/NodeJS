@@ -41,3 +41,34 @@ NodeJs Role in Web Development
   2. Using Files (by creating jd files and executing those files for applications)
       - Used for real applications
       - Predictable sequence of steps
+
+### Basics
+
+#### How web works
+
+- When user/client enters into website for example `http://my-page.com`.
+- Then **Domain Lookup** check for IP address assigned for that URL entered.
+- Then request will be sent to that IP address (server) which is sent from entering the URL by user/client.
+- Server contains our code and it does the required process based on the request.
+- After the processing the server sends the data as Response to user/client.
+
+There are some to follow that we can send response or request, those are calles **`Protocols`**.
+
+`HTTP`: *Hyper Text Transfer Protocol* - A Protocol for Transferring Sata which is understand by Browser and Server
+`HTTPS`: *Hyper Text Transfer Protocol Secure* - A Protocol for Transferring Sata which is understand by Browser and Server with Data Encryption (during Transformission).
+
+#### Create a Node Server
+
+- There are few modules, which are added gloablly along with node, can be used for creating server
+
+Some of the core modules are:
+
+1. `http`: Helps with launching a server and sending requests
+2. `https`: Launch SSL encoded server
+3. `fs`
+4. `path`
+5. `os`
+
+- For creating a server, initially we import core module called `http` which contains createServer function with returns server.
+- We have to call listen function from the server for any requests
+- Inside createServer, it takes function which process the request from user/client.
