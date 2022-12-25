@@ -72,3 +72,8 @@ Some of the core modules are:
 - For creating a server, initially we import core module called `http` which contains createServer function with returns server.
 - We have to call listen function from the server for any requests
 - Inside createServer, it takes function which process the request from user/client.
+
+#### NodeJs Lifecycle & Event Loop
+
+`$ node server.js` --> Start Script --> Parse Code, Resgister Variables & Functions --> enters into Event Loop
+
