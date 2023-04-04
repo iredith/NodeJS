@@ -142,3 +142,64 @@ The Node Module System
 
 - Import via require('./path-to-file') for custom files or require('module') for core & third-party modules
 - Export via module.exports or just exports (for multiple exports)
+
+#### Debug Module Summary
+
+npm
+
+- npm stands for **"Node Package Manager"** and it allows you to manage your Node project and its dependencies.
+- You can initialize a project with npm `init`.
+- npm scripts can be defined in the `package.json` to give you "shortcuts" to common tasks/ commands
+
+3rd Party Packages
+
+- Node projects typically don't use core modules and custom code but also third-party packages
+- You install them via npm
+- You can differenctiate between production dependencies (--save), development dependencies (--save-dev) and global dependencies (-g).
+
+Types are Errors
+
+- Syntax, runtime and logical errors can break you app
+- Syntax and runtime error throuw (helpful) error messages (with line numbers!)
+- Logical errors can be fixed with testing and the help of the debugger.
+
+Debugging
+
+- Use VSCode Node Debugger to step into your code and go through it step by step.
+- Analyze variable values at runtime
+- Look into (and manipulate) variables at runtime.
+- Set breakpoints cleverly (i.e. respect the async/ event-driven nature).
+
+#### WOrking with Express.js
+
+What is Express.js?
+
+- Express.js is a small framework that works on top of Node.js web server functionality to simplify its API and add helpful new features. It makes it easier to organise your application's functionality with middleware and routing. It adds helpful utilities to Node.js HTTP objects and facilities the rendering of dynamic HTTP objects.
+
+Why Express ?
+
+- Develops Node.js web applications quickly and easily.
+- It's simple to set up and personlise.
+- Allows you to define application routes using HTTP methods and URLs.
+- Includes a number of middleware modules that can be used to execute additional requests and responses activities.
+- Simple to interface with a varity of template engines, including Jade, Vash, and EJS.
+- Allows you to specify a middleware for handling errors.
+
+Alternatives to Express.js
+
+- Vanilla Node.js, Adonis.js, Koa, and Sails.js etc.,
+
+It's all about Middleware
+
+- Request ==> Middleware {(req, res, next) => { ... }} ==(next())==> Middleware {(req, res, next) => { ... }} ==(res.send())==> Response ==> 
+
+When we try to log body in request, it gives undefined as we are not parsing it.
+
+To solve this we use, *body-parser* module
+```
+// can be used in this format
+const bodyParser = require('body-parser'); // import body-parser
+
+// for parsing all the request body in middlewares of express
+app.use(bodyParser.urlencoded({ extended: false })); 
+```
