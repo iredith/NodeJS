@@ -191,11 +191,11 @@ Alternatives to Express.js
 
 It's all about Middleware
 
-- Request ==> Middleware {(req, res, next) => { ... }} ==(next())==> Middleware {(req, res, next) => { ... }} ==(res.send())==> Response ==> 
+- Request ==> Middleware *{(req, res, next) => { ... }}* ==(next())==> Middleware *{(req, res, next) => { ... }}* ==(res.send())==> Response ==> 
 
 When we try to log body in request, it gives undefined as we are not parsing it.
 
-To solve this we use, *body-parser* module
+To solve this we use, ***body-parser*** module
 ```
 // can be used in this format
 const bodyParser = require('body-parser'); // import body-parser
