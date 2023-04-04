@@ -170,7 +170,7 @@ Debugging
 - Look into (and manipulate) variables at runtime.
 - Set breakpoints cleverly (i.e. respect the async/ event-driven nature).
 
-#### WOrking with Express.js
+#### Working with Express.js
 
 What is Express.js?
 
