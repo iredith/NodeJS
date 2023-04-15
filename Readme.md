@@ -225,5 +225,17 @@ Routing
 Serve Files
 
 - You are not limited to serving dummy text as a response
-- You can sendFile() s as to your users - e.g. HTML files
+- You can `sendFile()` s as to your users - e.g. HTML files
 - If a request is directly made for a file (e.g. a .css file is requested), you can enable static serving for such files via `express.static()`
+
+#### Working with Dynamic Content & Adding Templates Engines
+
+- Templating Engines are used to creating dynamic content using node/express content which replaces placeholders in HTML.
+- But for users it is just HTML
+
+Available Templating Engines
+ - EJS, Pug, Handlebars
+ - EJS ==> <p><%= name %></p> ---> Use normal HTML and plain JavaScript in your templates
+ - Pug (Jade) ==> p #{name} ---> Use minimal HTML and custom template language
+ - Handlebars ==> <p>{{ name }}</p> ---> Use normal HTML and custom template language
+
