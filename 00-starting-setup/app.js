@@ -2,16 +2,20 @@ const path = require('path');
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const expressHbs = require('express-handlebars');
+// handle bars package import
+// const expressHbs = require('express-handlebars');
 
 const app = express();
 
 // handle bars view engine define
-app.engine('hbs', expressHbs({layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'hbs' }));
-app.set('view engine', 'hbs');
+// app.engine('hbs', expressHbs({layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'hbs' }));
+// app.set('view engine', 'hbs');
 
 // to set templating engine for pug and can set with in-built set function for view engine
 // app.set('view engine', 'pug');
+
+// set view engine to ejs
+app.set('view engine', 'ejs');
 
 const adminData = require("./routes/admin");
 const shopRoutes = require('./routes/shop');
