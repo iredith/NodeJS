@@ -239,3 +239,6 @@ Available Templating Engines
  - Pug (Jade) ==> p #{name} ---> Use minimal HTML and custom template language
  - Handlebars ==> <p>{{ name }}</p> ---> Use normal HTML and custom template language
 
+To use ejs and pug templates we can set values for `view engines` in express app as either `pug` or `ejs`.
+But for handlebars, we have install handlebars package. for example checkout `/00-starting-setup/app.js:10`
+

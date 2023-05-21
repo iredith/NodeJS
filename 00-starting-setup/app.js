@@ -16,6 +16,8 @@ const app = express();
 
 // set view engine to ejs
 app.set('view engine', 'ejs');
+// this to know for express from where the templates can be rendered. default: views
+app.set('views', 'views'); 
 
 const adminData = require("./routes/admin");
 const shopRoutes = require('./routes/shop');
