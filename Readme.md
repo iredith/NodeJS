@@ -242,3 +242,9 @@ Available Templating Engines
 To use ejs and pug templates we can set values for `view engines` in express app as either `pug` or `ejs`.
 But for handlebars, we have install handlebars package. for example checkout `/00-starting-setup/app.js:10`
 
+#### What is MVC?
+
+- Models: Represent of data in code. WOrk with your data (like save, fetch, etc.,)
+- Views: What user sees. Decoupled from your application code.
+- Controllers: Connecting your models and views. Contains the 'in-between logic'.
+
