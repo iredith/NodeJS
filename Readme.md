@@ -7,14 +7,14 @@
 - Node.js is a javasvript runtime and it helps to run javascript in any server or machine(outside the browser)
 - It uses V8 engine that is created by Google for running javascript which compile javascript code into machine code
 
-*Funny Fact: V8 engine is written in C++*
+_Funny Fact: V8 engine is written in C++_
 
 #### Installation
 
 - `nodejs.org` for downloading nodejs
 - Can check whether node is installed or not by using below command
-    $ node -v  // or
-    $ node --version
+  $ node -v // or
+  $ node --version
 
 - We can also open node shell with command `$ node`
 
@@ -35,12 +35,13 @@ NodeJs Role in Web Development
 > Alternatives for NodeJS are PHP, Python, Rubby, ASP.NET etc.,
 
 2 ways of executing javascript
-  1. The REPL(basically it's a node shell execution)
-      - Great PlayGround
-      - Execute code as you write it
-  2. Using Files (by creating jd files and executing those files for applications)
-      - Used for real applications
-      - Predictable sequence of steps
+
+1. The REPL(basically it's a node shell execution)
+   - Great PlayGround
+   - Execute code as you write it
+2. Using Files (by creating jd files and executing those files for applications)
+   - Used for real applications
+   - Predictable sequence of steps
 
 ### Basics
 
@@ -54,8 +55,8 @@ NodeJs Role in Web Development
 
 There are some to follow that we can send response or request, those are calles **`Protocols`**.
 
-`HTTP`: *Hyper Text Transfer Protocol* - A Protocol for Transferring Sata which is understand by Browser and Server
-`HTTPS`: *Hyper Text Transfer Protocol Secure* - A Protocol for Transferring Sata which is understand by Browser and Server with Data Encryption (during Transformission).
+`HTTP`: _Hyper Text Transfer Protocol_ - A Protocol for Transferring Sata which is understand by Browser and Server
+`HTTPS`: _Hyper Text Transfer Protocol Secure_ - A Protocol for Transferring Sata which is understand by Browser and Server with Data Encryption (during Transformission).
 
 #### Create a Node Server
 
@@ -86,6 +87,7 @@ Some of the core modules are:
 - We use second parameter to send response.
 
 In Request:
+
 - URL endpoint contains in request.url and method in request.method
 - Data will come to node server in the form of chunks until it is fully parsed.
 - We can use Buffer concept contruct to allow to build data
@@ -100,13 +102,13 @@ The process of Event Loops is that it loops into callbacks that to process in a 
 
 1. `Timer`: Execute setTimeOut, setInterval Callbacks
 2. `Pending Callbacks`: Execute I/O-related Callbacks that were deferred
-    - `I/O`? Input & Output Disk & Network Operations (~ Blocking Operations)
+   - `I/O`? Input & Output Disk & Network Operations (~ Blocking Operations)
 3. `Poll Phase`: Retrieve new I/O events, execute their callbacks.
-    - if it contains timer callbacks it jumps to Timer Execution
-    - Or defer Execution if it exists
+   - if it contains timer callbacks it jumps to Timer Execution
+   - Or defer Execution if it exists
 4. `Check`: Execute setImmediate() callbacks
 5. `Close Callbacks`: Execute all 'close' event callbacks
-6. if we don't have any events left and exits from process then we exits from server *process.exit* which is maintained with refs by adding count or it waits on listening for other request.
+6. if we don't have any events left and exits from process then we exits from server _process.exit_ which is maintained with refs by adding count or it waits on listening for other request.
 
 ![Event Loop](/images/event_loop.png "Event Loop priority order for handling callbacks")
 
@@ -191,17 +193,18 @@ Alternatives to Express.js
 
 It's all about Middleware
 
-- Request ==> Middleware *{(req, res, next) => { ... }}* ==(next())==> Middleware *{(req, res, next) => { ... }}* ==(res.send())==> Response ==> 
+- Request ==> Middleware _{(req, res, next) => { ... }}_ ==(next())==> Middleware _{(req, res, next) => { ... }}_ ==(res.send())==> Response ==>
 
 When we try to log body in request, it gives undefined as we are not parsing it.
 
-To solve this we use, ***body-parser*** module
+To solve this we use, **_body-parser_** module
+
 ```
 // can be used in this format
 const bodyParser = require('body-parser'); // import body-parser
 
 // for parsing all the request body in middlewares of express
-app.use(bodyParser.urlencoded({ extended: false })); 
+app.use(bodyParser.urlencoded({ extended: false }));
 ```
 
 #### Working with Express.js: Summary
@@ -234,17 +237,49 @@ Serve Files
 - But for users it is just HTML
 
 Available Templating Engines
- - EJS, Pug, Handlebars
- - EJS ==> <p><%= name %></p> ---> Use normal HTML and plain JavaScript in your templates
- - Pug (Jade) ==> p #{name} ---> Use minimal HTML and custom template language
- - Handlebars ==> <p>{{ name }}</p> ---> Use normal HTML and custom template language
+
+- EJS, Pug, Handlebars
+- EJS ==> <p><%= name %></p> ---> Use normal HTML and plain JavaScript in your templates
+- Pug (Jade) ==> p #{name} ---> Use minimal HTML and custom template language
+- Handlebars ==> <p>{{ name }}</p> ---> Use normal HTML and custom template language
 
 To use ejs and pug templates we can set values for `view engines` in express app as either `pug` or `ejs`.
 But for handlebars, we have install handlebars package. for example checkout `/00-starting-setup/app.js:10`
 
 #### What is MVC?
 
-- Models: Represent of data in code. WOrk with your data (like save, fetch, etc.,)
+- Models: Represent of data in code. Work with your data (like save, fetch, etc.,)
 - Views: What user sees. Decoupled from your application code.
 - Controllers: Connecting your models and views. Contains the 'in-between logic'.
 
+#### Module Summary
+
+- Model
+
+  - Responsible for representing your data
+  - Responsible for managing your data (saving, fetching, ...)
+  - Doesn't matter if you manage data in memory, files, databases
+  - Contains data-releated logic
+
+- View
+
+  - What the user sees
+  - Shouldn't contain too much logic (Handlebars!)
+
+- Controllers
+  - Connects Model and View
+  - Should only make sure that the two can communicate (in both directions)
+
+### Dynamic Routes & Advanced Models
+
+#### Dynamic Routing
+
+- You can pass dynamic path segments by adding a ":" to the Express router path
+- The name you add after ":" is the name by which you can extract the data on `req.params`
+- Optional (query) parameters can also be passed (?param=value&b=2) and extracted (req.query.myParam)
+
+#### More on Models
+
+- A Cart model was added - it holds static methods only
+- You can interact between models (e.g. delete cart item if a product is deleted)
+- Working with files for data storage is suboptimal for bigger amounts of data.
