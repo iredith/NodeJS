@@ -199,7 +199,7 @@ When we try to log body in request, it gives undefined as we are not parsing it.
 
 To solve this we use, **_body-parser_** module
 
-```
+```js
 // can be used in this format
 const bodyParser = require('body-parser'); // import body-parser
 
