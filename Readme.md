@@ -283,3 +283,45 @@ But for handlebars, we have install handlebars package. for example checkout `/0
 - A Cart model was added - it holds static methods only
 - You can interact between models (e.g. delete cart item if a product is deleted)
 - Working with files for data storage is suboptimal for bigger amounts of data.
+
+### SQL Introduction
+
+- Install and configure MySQL in either local or server
+- Get all the required credentials and configurations to start
+
+#### For setup in nodejs
+
+- Install `mysql2` package
+```sh
+npm i mysql2
+```
+
+#### Connect to database
+
+- Need to create a file that connects to database for server
+```js
+const mysql = require('mysql2');
+
+const pool = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    database: 'node-complete',
+    password: '336699'
+});
+
+module.exports = pool.promise();
+```
+
+This will create pool that will connect for every query that we run
+
+- To use the above connection pool
+
+```js
+// import the connection promise
+const db = require('/path/to/above-snippet');
+
+db.execute('');
+
+// to end db connection
+db.end()
+```
