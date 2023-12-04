@@ -325,3 +325,33 @@ db.execute('');
 // to end db connection
 db.end()
 ```
+
+### Sequelize
+
+#### What is sequelize?
+
+- An Object-Relation Mapping Library (ORM)
+
+It provides concepts like
+- Models           e.g. User, Product
+- Instances        const user = User.build()
+- Queries          User.findAll()
+- Associations     User.hasMany(Product)
+
+
+#### Sequilise Setup
+
+```js
+const Sequelize = require('sequelize');
+
+const sequelize = new Sequelize(
+    'node-complete',
+    'root',
+    '336699',
+    { 
+        dialect: 'mysql',
+        host: 'localhost'
+    });
+
+module.exports = sequelize;
+```
