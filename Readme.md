@@ -1,12 +1,11 @@
-## NodeJS
+# NodeJS
 
-### Introduction
+## Introduction
 
-#### What is NodeJS?
+### What is NodeJS?
 
 - Node.js is a javasvript runtime and it helps to run javascript in any server or machine(outside the browser)
 - It uses V8 engine that is created by Google for running javascript which compile javascript code into machine code
-
 _Funny Fact: V8 engine is written in C++_
 
 #### Installation
@@ -292,6 +291,7 @@ But for handlebars, we have install handlebars package. for example checkout `/0
 #### For setup in nodejs
 
 - Install `mysql2` package
+
 ```sh
 npm i mysql2
 ```
@@ -299,6 +299,7 @@ npm i mysql2
 #### Connect to database
 
 - Need to create a file that connects to database for server
+
 ```js
 const mysql = require('mysql2');
 
@@ -332,26 +333,81 @@ db.end()
 
 - An Object-Relation Mapping Library (ORM)
 
-It provides concepts like
-- Models           e.g. User, Product
-- Instances        const user = User.build()
-- Queries          User.findAll()
-- Associations     User.hasMany(Product)
+  Sequelize is a popular Object-Relational Mapping (ORM) library for Node.js, which provides an abstraction over traditional SQL databases. It supports various database management systems such as PostgreSQL, MySQL, SQLite, and MSSQL. Sequelize allows you to interact with your database using JavaScript and provides a powerful set of features for managing database operations.
 
+##### 1. Installation
 
-#### Sequilise Setup
+First, you need to install Sequelize and a database driver for your chosen database. For example, if you're using PostgreSQL, you can install Sequelize and the PostgreSQL driver as follows:
 
-```js
-const Sequelize = require('sequelize');
+```sh
+npm install sequelize mysql2
+```
 
-const sequelize = new Sequelize(
-    'node-complete',
-    'root',
-    '336699',
-    { 
-        dialect: 'mysql',
-        host: 'localhost'
-    });
+##### 2. Setting up Sequelize
 
-module.exports = sequelize;
+Create a Sequelize instance, configure it with your database connection details, and initialize it:
+
+```javascript
+const { Sequelize } = require('sequelize');
+
+const sequelize = new Sequelize('database-name', '<username>', '<password>', {
+  host: 'localhost',
+  dialect: 'mysql', // or 'mysql' or 'sqlite'
+});
+
+// Test the connection
+async function testConnection() {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+}
+
+testConnection();
+```
+
+##### 3. Defining Models
+
+Define your database tables as models in Sequelize. Models represent tables in your database and define the structure of your data.
+
+```javascript
+const { DataTypes } = require('sequelize');
+
+const User = sequelize.define('User', {
+  firstName: {
+    type: DataTypes.STRING,
+  },
+  lastName: {
+    type: DataTypes.STRING,
+  },
+});
+
+// Synchronize the model with the database (creates the table)
+async function syncDatabase() {
+  await sequelize.sync();
+  console.log('Database synchronized');
+}
+
+syncDatabase();
+```
+
+##### 4. CRUD Operations
+
+Use Sequelize models to perform CRUD (Create, Read, Update, Delete) operations on your database.
+
+```javascript
+// Create
+const newUser = await User.create({ firstName: 'John', lastName: 'Doe' });
+
+// Read
+const users = await User.findAll();
+console.log(users);
+
+// Update
+await User.update({ firstName: 'Jane' }, { where: { lastName: 'Doe' } });
+
+// Delete
+await User.destroy({ where: { lastName: 'Doe' } });
 ```
