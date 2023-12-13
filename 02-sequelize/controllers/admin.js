@@ -20,7 +20,6 @@ exports.postAddProduct = (req, res, next) => {
     imageUrl,
   })
     .then((result) => {
-      console.log('======> result', result);
       res.redirect('/admin/products');
     })
     .catch((err) => {

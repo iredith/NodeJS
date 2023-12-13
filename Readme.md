@@ -238,9 +238,9 @@ Serve Files
 Available Templating Engines
 
 - EJS, Pug, Handlebars
-- EJS ==> <p><%= name %></p> ---> Use normal HTML and plain JavaScript in your templates
+- EJS ==> `<p><%= name %></p>` ---> Use normal HTML and plain JavaScript in your templates
 - Pug (Jade) ==> p #{name} ---> Use minimal HTML and custom template language
-- Handlebars ==> <p>{{ name }}</p> ---> Use normal HTML and custom template language
+- Handlebars ==> `<p>{{ name }}</p>` ---> Use normal HTML and custom template language
 
 To use ejs and pug templates we can set values for `view engines` in express app as either `pug` or `ejs`.
 But for handlebars, we have install handlebars package. for example checkout `/00-starting-setup/app.js:10`
@@ -411,3 +411,15 @@ await User.update({ firstName: 'Jane' }, { where: { lastName: 'Doe' } });
 // Delete
 await User.destroy({ where: { lastName: 'Doe' } });
 ```
+
+##### Module summary
+
+**SQL**
+    - SQL uses strict data schemas and relations
+    - You can connect your Node.js app via packages like mysql2
+    - Writing SQL queries is not directly realted to Node.js and somethinh you have to learn in addition to Node.js
+
+**Sequelize**
+    - Instead of writing SQL queries manually, you can use packages (ORMs) like Sequelize to focus on the Node.js code and work with native JS objects
+    - Sequelize allows you define models and interact with the database through them
+    - You can also easily set up relations ("Associations") and interact with your related models through them.
