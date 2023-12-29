@@ -423,3 +423,7 @@ await User.destroy({ where: { lastName: 'Doe' } });
     - Instead of writing SQL queries manually, you can use packages (ORMs) like Sequelize to focus on the Node.js code and work with native JS objects
     - Sequelize allows you define models and interact with the database through them
     - You can also easily set up relations ("Associations") and interact with your related models through them.
+
+#### NoSQL
+
+NoSQL, or "not only SQL," refers to a class of database management systems (DBMS) that do not strictly adhere to the traditional relational database model. Unlike traditional relational databases, which use structured query language (SQL) for defining and manipulating the data, NoSQL databases are designed to handle a variety of data models and are often used for large-scale, distributed systems and real-time applications.
