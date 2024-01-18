@@ -427,3 +427,19 @@ await User.destroy({ where: { lastName: 'Doe' } });
 #### NoSQL
 
 NoSQL, or "not only SQL," refers to a class of database management systems (DBMS) that do not strictly adhere to the traditional relational database model. Unlike traditional relational databases, which use structured query language (SQL) for defining and manipulating the data, NoSQL databases are designed to handle a variety of data models and are often used for large-scale, distributed systems and real-time applications.
+
+#### Cookies
+
+- Great for storing data on the client (browser).
+- DO NOT store sensitive data here! It can be viewed + manipulated.
+- Cookies can be configured to expire when the browser is closed (=> "Session Cookie") or when certain age / expiry date is reached ("Permanent Cookie")
+- Works well together with Sessions.
+
+#### Sessions
+
+- Stored on the server not on the client.
+- Great for storing sensitive data that should survive across requests
+- You can store ANYTHING in sessions.
+- Often used to store User data/ Authentication Status.
+- Identified via cookie
+- You can use different storages for saving sessions on the server.
